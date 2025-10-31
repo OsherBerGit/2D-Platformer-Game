@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="2D Platformer Game"
-run/main_scene="uid://hfnv1fcxqdcy"
+run/main_scene="uid://0iuumlqb0wrc"
 config/features=PackedStringArray("4.5", "C#", "Mobile")
 
 [display]

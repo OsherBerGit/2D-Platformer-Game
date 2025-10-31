@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b2xtlqgtm33kp"]
+[gd_scene load_steps=15 format=3 uid="uid://b2xtlqgtm33kp"]
 
 [ext_resource type="Texture2D" uid="uid://c0x1cy3ae1ihj" path="res://assests/game elements/Jump (36x36).png" id="1_ejswk"]
 [ext_resource type="Script" uid="uid://dwko1k4ev2mcj" path="res://scenes/game_manager.gd" id="2_ejswk"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cfy0nykf0xs4x" path="res://scenes/levels/level2.tscn" id="8_bbk5w"]
 [ext_resource type="Texture2D" uid="uid://sl7ss5nm61fx" path="res://assests/game elements/heart.png" id="9_conm7"]
 [ext_resource type="PackedScene" uid="uid://bnu0h7rn7r2qp" path="res://scenes/game objects/enemy.tscn" id="9_d3jkd"]
+[ext_resource type="Script" uid="uid://dyo3fschgqgbq" path="res://scenes/levels/pause.gd" id="11_nkeig"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 24.0
@@ -333,5 +334,62 @@ layout_mode = 2
 texture = ExtResource("9_conm7")
 expand_mode = 2
 
+[node name="Pause" type="Node" parent="UI"]
+script = ExtResource("11_nkeig")
+
+[node name="PausePanel" type="Panel" parent="UI/Pause"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.5
+offset_top = 192.0
+offset_right = 179.5
+offset_bottom = 261.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -10.375
+offset_right = 270.0
+offset_bottom = 156.375
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="Menu" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Go to main menu"
+
 [node name="Enemy" parent="." instance=ExtResource("9_d3jkd")]
 position = Vector2(1079, 384)
+
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/Resume" to="UI/Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/Menu" to="UI/Pause" method="_on_menu_pressed"]

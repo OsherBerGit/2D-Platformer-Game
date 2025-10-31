@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cfy0nykf0xs4x"]
+[gd_scene load_steps=14 format=3 uid="uid://cfy0nykf0xs4x"]
 
 [ext_resource type="Texture2D" uid="uid://c0x1cy3ae1ihj" path="res://assests/game elements/Jump (36x36).png" id="1_8i3m3"]
 [ext_resource type="Script" uid="uid://dwko1k4ev2mcj" path="res://scenes/game_manager.gd" id="2_hrcei"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://8ovdeblr6fgy" path="res://scenes/game objects/collectable.tscn" id="6_dc5vx"]
 [ext_resource type="PackedScene" uid="uid://0iuumlqb0wrc" path="res://scenes/menu/main_menu.tscn" id="7_6ep0u"]
 [ext_resource type="PackedScene" uid="uid://u6fgmlq2f3jf" path="res://scenes/game objects/finish.tscn" id="7_s8oj7"]
+[ext_resource type="Texture2D" uid="uid://sl7ss5nm61fx" path="res://assests/game elements/heart.png" id="9_oyk6k"]
+[ext_resource type="Script" uid="uid://dyo3fschgqgbq" path="res://scenes/levels/pause.gd" id="10_gycjm"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lquwl"]
 radius = 24.0
@@ -293,3 +295,107 @@ theme_override_font_sizes/font_size = 30
 text = "Points : 0"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Hearts" type="Panel" parent="UI"]
+unique_name_in_owner = true
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -228.0
+offset_top = 14.0
+offset_bottom = 82.0
+grow_horizontal = 0
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Hearts"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -102.0
+offset_top = -28.5
+offset_right = 102.0
+offset_bottom = 28.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Heart" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+texture = ExtResource("9_oyk6k")
+expand_mode = 2
+
+[node name="Heart2" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+texture = ExtResource("9_oyk6k")
+expand_mode = 2
+
+[node name="Heart3" type="TextureRect" parent="UI/Hearts/HBoxContainer"]
+texture_filter = 1
+texture_repeat = 1
+layout_mode = 2
+texture = ExtResource("9_oyk6k")
+expand_mode = 2
+
+[node name="Pause" type="Node" parent="UI"]
+script = ExtResource("10_gycjm")
+
+[node name="PausePanel" type="Panel" parent="UI/Pause"]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -179.5
+offset_top = 192.0
+offset_right = 179.5
+offset_bottom = 261.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 60
+text = "GAME PAUSED"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Pause/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -270.0
+offset_top = -10.375
+offset_right = 270.0
+offset_bottom = 156.375
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Resume"
+
+[node name="Menu" type="Button" parent="UI/Pause/PausePanel/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 40
+text = "Go to main menu"
+
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/Resume" to="UI/Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="UI/Pause/PausePanel/VBoxContainer/Menu" to="UI/Pause" method="_on_menu_pressed"]
