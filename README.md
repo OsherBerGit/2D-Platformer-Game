@@ -1,11 +1,11 @@
 # 2D Platformer Game
 
-A 2D platformer game developed using Godot Engine 4.5 and C#.
+A 2D platformer game developed using Godot Engine 4.5.
 
 ## Features
 
 - 2D Platforming mechanics
-- C# Scripting
+- GDScript Scripting
 - Mobile platform support
 
 ## Controls
@@ -24,6 +24,4 @@ A 2D platformer game developed using Godot Engine 4.5 and C#.
 
 2. Open the project in Godot Engine 4.5 or later.
 
-3. Build the solution (since it uses C#).
-
-4. Run the main scene.
+3. Run the main scene.
