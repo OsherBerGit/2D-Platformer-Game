@@ -2,6 +2,8 @@
 
 A 2D platformer game developed using Godot Engine 4.5.
 
+This project was created by following the Coco Code tutorial.
+
 ## Features
 
 - 2D Platforming mechanics
