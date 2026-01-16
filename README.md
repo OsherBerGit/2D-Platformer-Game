@@ -1,7 +1,7 @@
 # 👾 Godot 2D Platformer Adventure
 
-![Godot Engine](https://img.shields.io/badge/Tools-Godot%20Engine_4.5-478CBF?logo=godotengine&logoColor=white)
 ![GDScript](https://img.shields.io/badge/Language-GDScript-355570)
+![Godot Engine](https://img.shields.io/badge/Godot%20Engine_4.5-478CBF?logo=godotengine&logoColor=white)
 <!-- ![Platform](https://img.shields.io/badge/Platform-PC%20%7C%20Mobile-lightgrey?style=for-the-badge) -->
 
 <!--
